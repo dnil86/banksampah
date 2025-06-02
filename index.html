@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Sampah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      padding-bottom: 80px;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    .beranda {
+      position: relative;
+      min-height: calc(100vh - 80px);
+      padding: 0 20px;
+      color: #000;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .beranda::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('gambar.png') center/cover no-repeat fixed;
+      filter: blur(3px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .beranda > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .beranda h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #4caf50;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      padding: 16px 30px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      background-color: #1976d2;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: inline-block;
+    }
+
+    .buttons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #000;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.7);
+    }
+
+    .footer-logo {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-links button:hover {
+      transform: translateY(-3px);
+      text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      flex-direction: column;
+      justify-content: space-around;
+      width: 28px;
+      height: 22px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger div {
+      width: 100%;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .footer.open .footer-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      background: #111;
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      width: 100%;
+      padding: 10px 0;
+    }
+
+    .footer.open .footer-links button {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .tentang-kami {
+      background: #fff;
+      color: #000;
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .tentang-kami h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #4caf50;
+    }
+
+    .tentang-kami p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Beranda -->
+  <section class="beranda" id="beranda">
+    <h1>Selamat Datang Di <span class="highlight">Bank Sampah</span></h1>
+    <div class="buttons">
+      <a href="#">Login</a>
+    </div>
+  </section>
+
+  <!-- Footer / Navigasi -->
+  <footer class="footer" id="footer">
+    <div class="footer-logo">
+      <img src="yai.png" alt="Logo Universitas" />
+    </div>
+
+    <nav class="footer-links" id="footerLinks">
+      <button onclick="scrollToSection('beranda')">Beranda</button>
+      <button onclick="scrollToSection('tentang-kami')">Tentang Kami</button>
+      <button onclick="scrollToSection('kontak')">Kontak</button>
+      <button onclick="scrollToSection('layanan')">Layanan</button>
+    </nav>
+
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </footer>
+
+  <!-- Tentang Kami -->
+  <section class="tentang-kami" id="tentang-kami">
+    <h2>Tentang Kami</h2>
+    <p>Bank Sampah adalah inisiatif pengelolaan sampah yang bertujuan meningkatkan kesadaran masyarakat akan pentingnya pemilahan dan daur ulang sampah.</p>
+    <p>Kami berkomitmen untuk memberikan edukasi, fasilitas, dan layanan terbaik dalam mendukung program pengelolaan sampah yang ramah lingkungan.</p>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" style="padding:80px 20px; max-width:900px; margin:0 auto 60px; text-align:center;">
+    <h2>Kontak</h2>
+    <p>Hubungi kami melalui email atau telepon untuk informasi lebih lanjut.</p>
+  </section>
+
+  <!-- Layanan -->
+  <section id="layanan" style="padding:80px 20px; max-width:900px; margin:0 auto 60px; text-align:center;">
+    <h2>Layanan</h2>
+    <p>Kami menyediakan berbagai layanan pengelolaan sampah yang dapat membantu lingkungan Anda.</p>
+  </section>
+
+  <!-- Script Scroll dan Toggle -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      const footer = document.getElementById('footer');
+      if (el) {
+        // Calculate the scroll position accounting for footer height
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 40; // 40px offset for better visibility
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Close mobile menu if open
+        if (footer.classList.contains('open')) {
+          footer.classList.remove('open');
+        }
+      }
+    }
+
+    const hamburger = document.getElementById('hamburger');
+    const footer = document.getElementById('footer');
+    hamburger.addEventListener('click', () => {
+      footer.classList.toggle('open');
+    });
+    hamburger.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        footer.classList.toggle('open');
+      }
+    });
+
+    // Prevent scrolling when mobile menu is open
+    footer.addEventListener('wheel', (e) => {
+      if (footer.classList.contains('open')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+</body>
+</html>
