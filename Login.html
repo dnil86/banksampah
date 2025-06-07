@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | e-Portal Bank Sampah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-green-100 to-white min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-green-700 mb-6">Login e-Portal</h2>
+
+    <form action="login.php" method="POST" class="space-y-4">
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">Nomor HP</label>
+        <input type="text" name="no_hp" required placeholder="08xxxxxxxxxx"
+               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+      </div>
+
+      <div>
+        <label class="block mb-1 font-medium text-gray-700">PIN / Kata Sandi</label>
+        <input type="password" name="pin" required placeholder="Masukkan PIN Anda"
+               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+      </div>
+
+      <button type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+        Masuk
+      </button>
+    </form>
+
+    <p class="text-sm text-center text-gray-600 mt-4">
+      Belum punya akun? <a href="daftar-nasabah.html" class="text-blue-600 hover:underline">Daftar di sini</a>
+    </p>
+  </div>
+
+</body>
+</html>
