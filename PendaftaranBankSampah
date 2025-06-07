@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Bank Sampah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+</head>
+<body class="bg-green-50 min-h-screen py-10 px-4">
+  <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-8">
+    <h1 class="text-2xl font-bold text-green-700 text-center mb-6">Formulir Pendaftaran Bank Sampah</h1>
+
+    <form id="bankSampahForm" onsubmit="handleSubmit(event)" class="space-y-6">
+      <!-- Nama Bank dan Tanggal -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block">Nama Bank Sampah</label>
+          <input name="nama_bank" required class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label class="block">Tanggal Berdiri</label>
+          <input type="date" name="tanggal_berdiri" required class="w-full border rounded px-3 py-2" />
+        </div>
+      </div>
+
+      <!-- Lokasi Google Maps -->
+      <div>
+        <label class="block mb-2">Tentukan Lokasi di Peta</label>
+        <div id="map" class="w-full h-64 rounded border"></div>
+        <input type="hidden" name="latitude" id="latitude" />
+        <input type="hidden" name="longitude" id="longitude" />
+      </div>
+
+      <!-- Kontak dan OTP WA -->
+      <div>
+        <label class="block">Nomor WhatsApp</label>
+        <div class="flex gap-2">
+          <input type="tel" id="waNumber" name="wa" required placeholder="08xxxxxxxxxx" class="w-full border rounded px-3 py-2" />
+          <button type="button" onclick="sendOTP()" class="bg-blue-600 text-white px-4 py-2 rounded">Kirim OTP</button>
+        </div>
+        <div class="mt-2">
+          <input type="text" id="otpInput" placeholder="Masukkan OTP" class="w-full border rounded px-3 py-2" />
+        </div>
+      </div>
+
+      <!-- Dokumen Upload -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block">Foto KTP Pengelola</label>
+          <input type="file" name="ktp" accept="image/*,.pdf" required />
+        </div>
+        <div>
+          <label class="block">Foto Lokasi</label>
+          <input type="file" name="lokasi" accept="image/*" required />
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="bg-green-600 text-white px-8 py-3 rounded">Kirim Pendaftaran</button>
+      </div>
+    </form>
+
+    <!-- Notifikasi Berhasil -->
+    <div id="successMessage" class="hidden mt-6 text-center text-green-700 font-bold">
+      Pendaftaran berhasil dikirim! Terima kasih telah bergabung dalam program Bank Sampah Jakarta.
+    </div>
+  </div>
+
+  <script>
+    // Inisialisasi Peta
+    function initMap() {
+      const defaultLoc = { lat: -6.200000, lng: 106.816666 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: defaultLoc,
+        zoom: 12,
+      });
+      let marker = new google.maps.Marker({ position: defaultLoc, map });
+
+      map.addListener("click", (e) => {
+        const lat = e.latLng.lat();
+        const lng = e.latLng.lng();
+        document.getElementById("latitude").value = lat;
+        document.getElementById("longitude").value = lng;
+        marker.setPosition({ lat, lng });
+      });
+    }
+
+    // Simulasi OTP WhatsApp
+    function sendOTP() {
+      const number = document.getElementById("waNumber").value;
+      if (number.length < 10) return alert("Nomor tidak valid");
+      alert(`Kode OTP dikirim ke WhatsApp ${number}`);
+      // Simpan OTP sementara (dummy)
+      window.generatedOTP = "123456";
+    }
+
+    // Kirim Formulir
+    function handleSubmit(event) {
+      event.preventDefault();
+      const userOTP = document.getElementById("otpInput").value;
+      if (userOTP !== window.generatedOTP) {
+        alert("OTP salah. Coba lagi.");
+        return;
+      }
+      document.getElementById("successMessage").classList.remove("hidden");
+      document.getElementById("bankSampahForm").reset();
+    }
+  </script>
+</body>
+</html>
