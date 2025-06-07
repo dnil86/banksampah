@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>e-Portal Sampah Jakarta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-sky-200 to-white min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-10">
+    <h1 class="text-gray-600 text-lg font-semibold">Portal Resmi</h1>
+    <h2 class="text-4xl md:text-5xl font-extrabold text-green-900 mt-2">
+      e-Portal Sampah Jakarta
+    </h2>
+    <p class="text-gray-600 mt-2">
+      Dinas Lingkungan Hidup Provinsi DKI Jakarta
+    </p>
+  </header>
+
+  <!-- Tombol Navigasi -->
+  <div class="flex justify-center gap-4 flex-wrap px-4">
+    <a href="#" class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition">
+      Pendaftaran Nasabah
+    </a>
+    <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition">
+      Pendaftaran Bank Sampah
+    </a>
+    <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition">
+      Login
+    </a>
+  </div>
+
+  <!-- Ilustrasi -->
+  <div class="mt-12 flex justify-center">
+    <img src="https://i.ibb.co/BGqBjGL/bank-sampah-ilustrasi.png" alt="Ilustrasi Bank Sampah" class="max-w-4xl w-full px-6" />
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center mt-16 text-sm text-gray-500 pb-6">
+    &copy; 2025 e-Portal Sampah Jakarta. Dinas Lingkungan Hidup Provinsi DKI Jakarta.
+  </footer>
+
+</body>
+</html>
